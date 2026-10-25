@@ -1,0 +1,40 @@
+name: rules-watch
+
+# Every Monday, re-read the Claude docs and MCP spec pages the rules come from.
+# If one has changed, open an issue so the rules are reviewed the same week.
+
+on:
+  schedule:
+    - cron: '17 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: watch
+        run: |
+          set +e
+          node scripts/watch-sources.mjs > watch.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat watch.md
+      - name: Open an issue when a source page changed
+        if: steps.watch.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Rules review: a Claude docs or MCP spec page changed"
+          if gh issue list --state open --label rules-review --search "$title in:title" --json number --jq '.[0].number' | grep -q .; then
+            echo "An open rules-review issue already exists."
+          else
+            gh label create rules-review --color FBCA04 --description "A source page changed; rules need a review" 2>/dev/null || true
+            gh issue create --title "$title" --label rules-review --body-file watch.md
+          fi

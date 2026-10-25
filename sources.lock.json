@@ -1,0 +1,32 @@
+{
+  "submission": {
+    "url": "https://claude.com/docs/connectors/building/submission",
+    "sha256": "5f420e0296955fe7431da5d3c4c6574c54526ce5dddf5060075d03e398af1b1e",
+    "lines": 116
+  },
+  "review": {
+    "url": "https://claude.com/docs/connectors/building/review-criteria",
+    "sha256": "4723b1755b2cefe4bbc41094c94934f004fedcb6f6b9264136789e7bc7c97b79",
+    "lines": 59
+  },
+  "auth": {
+    "url": "https://claude.com/docs/connectors/building/authentication",
+    "sha256": "918b95d1b5898fa9b10a8e2fd758126f3fe8aa806bbefa52eb10152b4e41efa5",
+    "lines": 168
+  },
+  "spec": {
+    "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+    "sha256": "0edc15c397fc55e230ffc23bc75c0c99a5f746792fe26633ccc1d5c3210b8df9",
+    "lines": 430
+  },
+  "schema": {
+    "url": "https://modelcontextprotocol.io/specification/2025-11-25/schema",
+    "sha256": "bafb613df11630d8ffb39da6ebd01203ba48d04bae676498b9c3d974e342489e",
+    "lines": 1016
+  },
+  "metadata": {
+    "url": "https://developers.openai.com/plugins/guides/optimize-metadata",
+    "sha256": "e32e1013f38a179fe7eadc4a33fc08480b55c65b581dfd3bd5d20713aa92f952",
+    "lines": 43
+  }
+}

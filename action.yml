@@ -1,0 +1,73 @@
+name: Claude connector preflight
+description: Check a remote MCP server against the Claude connectors directory requirements on every deploy.
+author: Presso Network
+branding:
+  icon: check-circle
+  color: orange
+
+inputs:
+  url:
+    description: The MCP server URL, exactly as users paste it into Claude.
+    required: true
+  token:
+    description: Optional access token, to check tools on a server that needs sign-in. Pass it from a secret.
+    required: false
+    default: ''
+  privacy-url:
+    description: Optional privacy policy URL for the listing.
+    required: false
+    default: ''
+  docs-url:
+    description: Optional documentation URL for the listing.
+    required: false
+    default: ''
+  fail-on-blocking:
+    description: Fail the job when there are blocking issues (true or false).
+    required: false
+    default: 'true'
+
+outputs:
+  blocking:
+    description: Number of blocking issues.
+    value: ${{ steps.run.outputs.blocking }}
+  ready:
+    description: true when every scripted check passed and the tools were checked.
+    value: ${{ steps.run.outputs.ready }}
+
+# Uses the Node.js already on GitHub-hosted runners (20 or later) and leaves the job's Node version alone.
+runs:
+  using: composite
+  steps:
+    - id: run
+      shell: bash
+      env:
+        MCP_PREFLIGHT_TOKEN: ${{ inputs.token }}
+        INPUT_URL: ${{ inputs.url }}
+        INPUT_PRIVACY: ${{ inputs.privacy-url }}
+        INPUT_DOCS: ${{ inputs.docs-url }}
+        INPUT_FAIL: ${{ inputs.fail-on-blocking }}
+      run: |
+        set +e
+        if [ -n "$MCP_PREFLIGHT_TOKEN" ]; then echo "::add-mask::$MCP_PREFLIGHT_TOKEN"; fi
+        args=("$INPUT_URL")
+        [ -n "$INPUT_PRIVACY" ] && args+=(--privacy-url "$INPUT_PRIVACY")
+        [ -n "$INPUT_DOCS" ] && args+=(--docs-url "$INPUT_DOCS")
+        report="$RUNNER_TEMP/connector-preflight.json"
+        node "$GITHUB_ACTION_PATH/bin/connector-preflight.js" "${args[@]}" --format json --markdown-out "$GITHUB_STEP_SUMMARY" > "$report"
+        code=$?
+        node -e '
+          let r = {};
+          try { r = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")); } catch {}
+          console.log(`blocking=${r.counts?.blocking ?? 0}`);
+          console.log(`ready=${r.ready === true}`);
+        ' "$report" >> "$GITHUB_OUTPUT"
+        fail=$(echo "$INPUT_FAIL" | tr '[:upper:]' '[:lower:]')
+        case "$code" in
+          0) exit 0 ;;
+          1) echo "::error::Connector preflight found blocking issues. See the job summary."
+             [ "$fail" = "true" ] && exit 1 || exit 0 ;;
+          3) echo "::warning::Connector preflight did not check the tools (the server needs sign-in). Pass a token to check them."
+             exit 0 ;;
+          *) echo "::error::Connector preflight could not reach the MCP server. See the job summary."
+             exit 2 ;;
+        esac

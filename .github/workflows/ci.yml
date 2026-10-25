@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+      - name: CLI runs and prints help
+        run: node bin/connector-preflight.js --help
+      - name: JSON files parse
+        run: node -e "for (const f of ['package.json','.claude-plugin/plugin.json','.claude-plugin/marketplace.json','sources.lock.json']) JSON.parse(require('fs').readFileSync(f)); console.log('ok')"
+
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Plugin and marketplace manifests validate
+        run: npx -y @anthropic-ai/claude-code plugin validate .

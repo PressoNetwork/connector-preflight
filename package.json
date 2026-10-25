@@ -1,0 +1,46 @@
+{
+  "name": "connector-preflight",
+  "version": "0.1.0",
+  "description": "Check a remote MCP server against the Claude connectors directory requirements before you submit: OAuth discovery, tool annotations, naming and review criteria. Read-only, zero dependencies.",
+  "type": "module",
+  "bin": {
+    "connector-preflight": "bin/connector-preflight.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "connector",
+    "mcp-server",
+    "oauth",
+    "lint",
+    "directory",
+    "anthropic"
+  ],
+  "author": "Presso Network Ltd (https://pressonetwork.com)",
+  "contributors": [
+    "Kristian Papadakis (https://kristianpapadakis.com)"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PressoNetwork/connector-preflight.git"
+  },
+  "homepage": "https://github.com/PressoNetwork/connector-preflight#readme",
+  "bugs": "https://github.com/PressoNetwork/connector-preflight/issues"
+}

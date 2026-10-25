@@ -1,0 +1,23 @@
+{
+  "name": "connector-preflight",
+  "owner": {
+    "name": "Presso Network",
+    "url": "https://pressonetwork.com"
+  },
+  "description": "Preflight your MCP server before you submit it to the Claude connectors directory.",
+  "plugins": [
+    {
+      "name": "connector-preflight",
+      "source": "./",
+      "description": "Run the directory checks against a remote MCP server and fix what fails in your own code.",
+      "category": "development",
+      "keywords": [
+        "mcp",
+        "connector",
+        "oauth",
+        "claude-code"
+      ],
+      "homepage": "https://github.com/PressoNetwork/connector-preflight"
+    }
+  ]
+}

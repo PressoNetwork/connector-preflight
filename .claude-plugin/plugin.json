@@ -1,0 +1,20 @@
+{
+  "name": "connector-preflight",
+  "version": "0.1.0",
+  "description": "Check a remote MCP server against the Claude connectors directory requirements, then fix what fails: OAuth discovery, tool titles and annotations, naming and the review criteria. Read-only against the server.",
+  "author": {
+    "name": "Presso Network",
+    "url": "https://pressonetwork.com"
+  },
+  "homepage": "https://github.com/PressoNetwork/connector-preflight",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "connector",
+    "claude-directory",
+    "oauth",
+    "claude-code"
+  ],
+  "repository": "https://github.com/PressoNetwork/connector-preflight"
+}
