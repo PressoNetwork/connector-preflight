@@ -17,6 +17,7 @@ Options
   --privacy-url <url>   Privacy policy URL for the listing
   --docs-url <url>      Documentation URL for the listing
   --format <fmt>        text (default), json or markdown
+  --json                Same as --format json
   --verbose             Show detail for passing checks too
   --no-token-probe      Skip the invalid refresh-token request to your token endpoint
   --no-fail             Exit 0 even with blocking issues or unchecked tools
@@ -37,6 +38,7 @@ try {
       'privacy-url': { type: 'string' },
       'docs-url': { type: 'string' },
       format: { type: 'string', default: 'text' },
+      json: { type: 'boolean', default: false },
       verbose: { type: 'boolean', default: false },
       'no-token-probe': { type: 'boolean', default: false },
       'no-fail': { type: 'boolean', default: false },
@@ -52,6 +54,7 @@ try {
 }
 
 const { values, positionals } = args;
+if (values.json) values.format = 'json';
 if (values.help) { console.log(HELP); process.exit(0); }
 if (values.version) { console.log(VERSION); process.exit(0); }
 if (positionals.length !== 1) { console.error(HELP); process.exit(2); }

@@ -202,5 +202,7 @@ test('exit codes: 2 for an invalid URL or no server, 1 for blocking issues', asy
     assert.equal(await code([s.url, '--no-fail']), 0);
     const { stdout } = await run(process.execPath, [bin, s.url, '--format', 'json', '--no-fail']);
     assert.equal(JSON.parse(stdout).tools.length, 3, 'piped JSON is complete');
+    const short = await run(process.execPath, [bin, s.url, '--json', '--no-fail']);
+    assert.equal(JSON.parse(short.stdout).tools.length, 3, '--json is the same as --format json');
   } finally { await s.close(); }
 });

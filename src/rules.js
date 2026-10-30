@@ -1,7 +1,7 @@
 // Every rule this tool enforces, with the page it comes from and the date that page was last read.
 // The weekly rules-watch workflow re-reads these pages and opens an issue when one changes.
 
-export const RULES_CHECKED = '25/10/2026';
+export const RULES_CHECKED = '30/10/2026';
 
 export const SOURCES = {
   submission: {
