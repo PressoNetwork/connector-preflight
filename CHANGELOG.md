@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1 (30/10/2026)
+
+All six source pages re-read on 30/10/2026.
+
+- Fix: `--json` now works as a shorthand for `--format json`. The text report already told people to "use --json for all" when a list was cut short, but the flag was rejected and the run exited 2.
+- Rules: the MCP specification's Tools page changed on 28/10/2026 (modelcontextprotocol/modelcontextprotocol#3462, an embedded-resource example moved its `annotations`). No requirement this tool checks moved. The other five source pages are unchanged. `sources.lock.json` refreshed and `RULES_CHECKED` set to 30/10/2026.
+
 ## 0.1.0 (25/10/2026)
 
 First release. Rules checked against Claude's docs on 25/10/2026.

@@ -3,7 +3,7 @@
 **Will Claude's connectors directory accept your MCP server? Find out in 30 seconds, before you submit.**
 
 [![ci](https://github.com/PressoNetwork/connector-preflight/actions/workflows/ci.yml/badge.svg)](https://github.com/PressoNetwork/connector-preflight/actions/workflows/ci.yml)
-[![rules checked](https://img.shields.io/badge/rules%20checked-25%2F10%2F2026-blue)](sources.lock.json)
+[![rules checked](https://img.shields.io/badge/rules%20checked-30%2F10%2F2026-blue)](sources.lock.json)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ```bash
@@ -90,6 +90,7 @@ Install it as a plugin, then ask Claude to preflight your server. It runs the ch
 --privacy-url <url>    Privacy policy URL for the listing
 --docs-url <url>       Documentation URL for the listing
 --format <fmt>         text (default), json or markdown
+--json                 Same as --format json (wins over --format)
 --markdown-out <file>  Also append a markdown report to a file
 --verbose              Show detail for passing checks
 --no-token-probe       Skip the invalid refresh-token request to your token endpoint

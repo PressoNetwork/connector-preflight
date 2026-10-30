@@ -14,10 +14,10 @@ Ask for the server's public `https://` URL if you do not have it, exactly as use
 ## 2. Run it
 
 ```bash
-npx -y github:PressoNetwork/connector-preflight#v0.1.0 <url> --format json
+npx -y github:PressoNetwork/connector-preflight#v0.1.1 <url> --format json
 ```
 
-- If the server needs sign-in for `tools/list`, the report says the tools were not checked. Ask the user for a short-lived access token, then pass it through the environment, never on a command line that ends up in their shell history: `MCP_PREFLIGHT_TOKEN=<token> npx -y github:PressoNetwork/connector-preflight#v0.1.0 <url> --format json`.
+- If the server needs sign-in for `tools/list`, the report says the tools were not checked. Ask the user for a short-lived access token, then pass it through the environment, never on a command line that ends up in their shell history: `MCP_PREFLIGHT_TOKEN=<token> npx -y github:PressoNetwork/connector-preflight#v0.1.1 <url> --format json`.
 - Add `--privacy-url` and `--docs-url` when the user has them.
 
 ## 3. Read the report

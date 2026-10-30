@@ -1,6 +1,6 @@
 {
   "name": "connector-preflight",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Check a remote MCP server against the Claude connectors directory requirements before you submit: OAuth discovery, tool annotations, naming and review criteria. Read-only, zero dependencies.",
   "type": "module",
   "bin": {
