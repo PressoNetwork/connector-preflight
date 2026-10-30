@@ -17,7 +17,7 @@ Options
   --privacy-url <url>   Privacy policy URL for the listing
   --docs-url <url>      Documentation URL for the listing
   --format <fmt>        text (default), json or markdown
-  --json                Same as --format json
+  --json                Same as --format json (wins over --format)
   --verbose             Show detail for passing checks too
   --no-token-probe      Skip the invalid refresh-token request to your token endpoint
   --no-fail             Exit 0 even with blocking issues or unchecked tools
