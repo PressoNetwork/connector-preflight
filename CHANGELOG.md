@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 (15/11/2026)
+
+All six source pages re-read on 15/11/2026.
+
+- Rules: three Claude docs pages changed since 30/10/2026 (Submit a connector, the pre-submission checklist, Authentication for connectors). No requirement this tool checks moved. The submission page now says local MCP servers (MCPB bundles) are no longer accepted and belong in a plugin, adds an optional allowed-link-URIs list for connectors that open links, and states that a listing with per-customer URLs can only be published once Verified. The authentication page adds the options for per-customer URLs and Anthropic-held credentials and keeps the same OAuth requirements. `sources.lock.json` refreshed and `RULES_CHECKED` set to 15/11/2026.
+- The pinned version in the Claude Code skill moves to v0.1.2.
+
 ## 0.1.1 (30/10/2026)
 
 All six source pages re-read on 30/10/2026.

@@ -1,18 +1,18 @@
 {
   "submission": {
     "url": "https://claude.com/docs/connectors/building/submission",
-    "sha256": "5f420e0296955fe7431da5d3c4c6574c54526ce5dddf5060075d03e398af1b1e",
-    "lines": 116
+    "sha256": "2b0e3f8b54aa3d6bfde33d3336bac5abbc3350d5a16339b6c02073c3b982862e",
+    "lines": 114
   },
   "review": {
     "url": "https://claude.com/docs/connectors/building/review-criteria",
-    "sha256": "4723b1755b2cefe4bbc41094c94934f004fedcb6f6b9264136789e7bc7c97b79",
+    "sha256": "36f7efbd2481a1bafe1658d9766941327357c3756208c47d9c8df6288f392ad8",
     "lines": 59
   },
   "auth": {
     "url": "https://claude.com/docs/connectors/building/authentication",
-    "sha256": "918b95d1b5898fa9b10a8e2fd758126f3fe8aa806bbefa52eb10152b4e41efa5",
-    "lines": 168
+    "sha256": "eb67e638bc40b71df325b49175909c0c7bb77bb44eb89b454e983ad907413718",
+    "lines": 169
   },
   "spec": {
     "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
